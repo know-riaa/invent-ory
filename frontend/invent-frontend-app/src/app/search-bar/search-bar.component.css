@@ -39,8 +39,8 @@ button{
 }
 
     button{
-    height: 44px;
-    /* width: 20%; */
-    font-size: 1rem;
+    width: auto;
+    font-size: 0.9rem;
+    height: auto;
 }
 }

@@ -3,7 +3,7 @@ name: Deploy Angular App to S3
 on:
   push:
     branches:
-      - main  # or 'dev' if that's where you deploy from
+      - dev  # or 'dev' if that's where you deploy from
 
 jobs:
   deploy:

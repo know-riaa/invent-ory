@@ -20,11 +20,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: frontend/  # adjust if different
+        working-directory: frontend/invent-frontend-app  # adjust if different
 
       - name: Build Angular app
         run: npm run build -- --configuration=production
-        working-directory: frontend/
+        working-directory: frontend/invent-frontend-app
 
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master

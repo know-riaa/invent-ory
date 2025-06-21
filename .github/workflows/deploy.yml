@@ -1,0 +1,38 @@
+name: Deploy Angular App to S3
+
+on:
+  push:
+    branches:
+      - main  # or 'dev' if that's where you deploy from
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: frontend/inventory-frontend-app  # adjust if different
+
+      - name: Build Angular app
+        run: npm run build -- --configuration=production
+        working-directory: frontend/inventory-frontend-app
+
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --delete
+        env:
+          AWS_S3_BUCKET: inventory-frontend-app  # your bucket name
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1  # your region
+          SOURCE_DIR: frontend/inventory-frontend-app/dist/  # will auto-detect subdir

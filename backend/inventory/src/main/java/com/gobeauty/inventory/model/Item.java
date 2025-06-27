@@ -27,4 +27,5 @@ public class Item {
     private float price;
 
     private String image_url;
+    
 }

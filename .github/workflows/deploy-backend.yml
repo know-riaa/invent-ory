@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - dev  # or 'main' if you prefer
-    paths:
-      - 'backend/**'
 
 jobs:
   backend-deploy:

@@ -31,7 +31,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: backend/spring-project-folder/target/*.jar
+          source: backend/inventory/target/*.jar
           target: ~/
 
       - name: SSH and run Spring Boot app

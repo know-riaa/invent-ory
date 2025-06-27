@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - dev  # or 'dev' if that's where you deploy from
+    paths:
+      - 'frontend/**'
 
 jobs:
   deploy:

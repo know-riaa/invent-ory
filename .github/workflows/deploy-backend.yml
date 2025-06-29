@@ -42,7 +42,7 @@ jobs:
           script: |
             pkill -f 'java -jar' || true
             chmod 755 ~/inventory.jar
-            nohup java -jar ~/inventory.jar --server.address=0.0.0.0 > app.log 2>&1 &
+            nohup java -jar ~/backend/inventory/target/inventory-0.0.1-SNAPSHOT.jar --server.address=0.0.0.0 > app.log 2>&1 &
             sleep 5
             tail -n 20 app.log
             exit 0

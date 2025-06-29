@@ -3,7 +3,7 @@ name: Deploy Spring Boot Backend to EC2
 on:
   push:
     branches:
-      - dev  # or 'main' if you prefer
+      - dev
 
 jobs:
   backend-deploy:
@@ -21,7 +21,7 @@ jobs:
 
       - name: Build Spring Boot app
         run: ./mvnw clean package -DskipTests
-        working-directory: backend/inventory  # adjust if needed
+        working-directory: backend/inventory
 
       - name: Copy JAR to EC2
         uses: appleboy/scp-action@v0.1.4
@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           source: backend/inventory/target/*.jar
-          target: ~/
+          target: ~/inventory.jar
 
       - name: SSH and run Spring Boot app
         uses: appleboy/ssh-action@v1.0.0
@@ -40,6 +40,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             pkill -f 'java -jar' || true
+            chmod 755 ~/inventory.jar
             nohup java -jar ~/inventory.jar --server.address=0.0.0.0 > app.log 2>&1 &
             sleep 5
             tail -n 20 app.log

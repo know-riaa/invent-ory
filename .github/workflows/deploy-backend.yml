@@ -43,6 +43,3 @@ jobs:
             pkill -f 'java -jar' || true
             chmod 755 ~/backend/inventory/target/inventory-0.0.1-SNAPSHOT.jar
             nohup java -jar ~/backend/inventory/target/inventory-0.0.1-SNAPSHOT.jar --server.address=0.0.0.0 > app.log 2>&1 &
-            sleep 5
-            tail -n 20 app.log
-            exit 0

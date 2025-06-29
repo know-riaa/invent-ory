@@ -31,7 +31,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           source: backend/inventory/target/*.jar
           target: ~/
-          debug: true
 
       - name: SSH and run Spring Boot app
         uses: appleboy/ssh-action@v1.0.0
@@ -42,8 +41,5 @@ jobs:
           script: |
             (pkill -f 'java -jar' || true)
             chmod 755 ~/backend/inventory/target/inventory-0.0.1-SNAPSHOT.jar
-            nohup java -jar ~/backend/inventory/target/inventory-0.0.1-SNAPSHOT.jar --server.address=0.0.0.0 > app.log 2>&1 &
+            nohup java -jar ~/backend/inventory/target/inventory-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
             disown
-            sleep 5
-            tail -n 20 app.log
-            exit 0

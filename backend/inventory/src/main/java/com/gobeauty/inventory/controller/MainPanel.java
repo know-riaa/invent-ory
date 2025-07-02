@@ -20,7 +20,6 @@ public class MainPanel {
         this.mainService = mainService;
     }
 
-
     @GetMapping("/search")
     public List<Item> search(@RequestParam String string){
         return mainService.findByBrand(string);

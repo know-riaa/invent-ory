@@ -21,7 +21,8 @@
 }
 
 h2{
-    font-size: 5rem;
+    font-size: 3rem;
+    text-decoration: underline;
 }
 
 .imageAndPrice {
@@ -34,4 +35,16 @@ h2{
 
 img {
     max-width: 37%;
+}
+
+@media (max-width: 600px){
+
+    .inner-child h1 {
+        font-size: 2rem;;
+    }
+
+    img {
+    max-width: 70%;
+    }
+
 }

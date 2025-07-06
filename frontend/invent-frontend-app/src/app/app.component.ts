@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { HttpClient, HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
+  apiUrl = environment.apiUrl;
   title = 'invent-frontend-app';
 
   constructor(private http: HttpClient){}
@@ -19,9 +22,9 @@ export class AppComponent {
   response: any[] = [];
 
   userData(query:string){
+    console.log("Working URL:", this.apiUrl);
     console.log('User Input is :', query);
-
-    this.http.get<any[]>(`http://localhost:8080/main/search/${query}`)
+    this.http.get<any[]>(`${this.apiUrl}/main/search/${query}`)
     .subscribe({
       next: (res) =>  {
         this.response = res;

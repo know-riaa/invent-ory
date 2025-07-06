@@ -1,0 +1,37 @@
+.result {
+    height: 70vh;
+    /* background-color: red; */
+    
+    justify-content: center;
+    flex-direction: column;
+}
+
+.parent {
+    /* background-color: white;; */
+}
+
+.inner-child{
+    text-align: center;
+}
+
+.inner-child h1 {
+    font-size: 3rem;
+    text-align: center;
+    /* background-color: pink; */
+}
+
+h2{
+    font-size: 5rem;
+}
+
+.imageAndPrice {
+
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+img {
+    max-width: 37%;
+}

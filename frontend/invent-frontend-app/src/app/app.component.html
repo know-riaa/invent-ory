@@ -1,1 +1,13 @@
 <app-search-bar (search)="userData($event)"></app-search-bar>
+
+<div *ngFor="let item of response" class="result">
+    <div class = "parent">
+        <div class="inner-child">
+            <h1>{{item.product_name}}</h1>
+            <h2>{{item.price}}</h2>
+        <div>
+        <div class="imageAndPrice">
+                <img [src]="item.image_url">
+        </div>
+    </div>
+</div>

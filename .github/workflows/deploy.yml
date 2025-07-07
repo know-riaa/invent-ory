@@ -24,7 +24,13 @@ jobs:
         run: npm install
         working-directory: frontend/invent-frontend-app  # adjust if different
 
-      - name: Build Angular app
+      - name: Build Angular app (dev)
+        if: github.ref_name == 'dev'
+        run: npm run build -- --configuration=development
+        working-directory: frontend/invent-frontend-app
+
+      - name: Build Angular app (prod)
+        if: github.ref_name == 'prod'
         run: npm run build -- --configuration=production
         working-directory: frontend/invent-frontend-app
 

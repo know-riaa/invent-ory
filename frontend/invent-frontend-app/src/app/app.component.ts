@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
 
   apiUrl = environment.apiUrl;
